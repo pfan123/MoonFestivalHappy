@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>中秋节快乐-只想对你说</title>
+	<meta name="keywords" content="中秋节快乐-只想对你说">
+	<meta name="description" content="中秋节快乐-只想对你说">
+	<meta name="author" content="pingfan">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="x5-page-mode" content="app"> 	
+	<meta content="email=no" name="format-detection" />		
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="full-screen" content="true">
+	<meta name="renderer" content="webkit">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">	
+	<style type="text/css">
+		html,body{height:100%;overflow:hidden}
+		html{    
+			-ms-text-size-adjust:100%;
+			-webkit-text-size-adjust:100%;
+		}
+		*{
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			word-wrap:break-word;		
+		}
+		body,h2,ul,li,article{margin:0;}
+		h2,ul,article{padding:0}
+		ul{list-style:none;}
+		body{
+			background:url(public/img/10.jpg);
+			background-size:cover;
+			font-size:100%;
+			font-family: Microsoft YaHei, sans-serif, Microsoft JhengHei,Arial;
+		}
+		textarea{
+			font-size:100%;
+			font-family: Microsoft YaHei, sans-serif, Microsoft JhengHei,Arial;		
+		}
+		.tip,.main{
+			position:absolute;
+			z-index:9999;
+		}
+		.tip{
+			background: rgba(0,0,0,0.5);
+			height: 30px;
+			line-height: 30px;
+			color: #ffffff;
+			text-align:center;			
+			left:0;
+			top:0;			
+			text-shadow:0 0 3px rgba(0,0,0,0.5);
+			width:100%;
+			font-size:.75em;
+			font-style:normal;
+			letter-spacing:1px;
+		}
+		.main{
+			position:absolute;
+			top:30px;
+			overflow-y:auto;
+            -webkit-overflow-scrolling:touch;
+			left:0;
+			bottom:0;
+			width:100%;
+			padding:2.5%;
+		}
+		
+		/*音乐*/
+		.btn_music{
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			background: url("public/img/play.png") no-repeat center center;
+			background-size: 100% auto;
+			z-index: 100;
+			outline:0;
+			-webkit-tap-highlight-color:rgba(255,0,0,0);
+			float:left;
+		}
+		.on{
+			background: url("public/img/stop.png") no-repeat center center;
+			background-size: 100% auto;
+		}
+		#soundName{
+			font-size:.85em;
+			float:left;
+			line-height:35px;
+			margin-left:10px;
+			color:#fff;
+			text-shadow:0 1px 0px rgba(0,0,0,.2);
+		}
+		
+		/*设置切换*/
+		.tabset{
+			width:96%;
+			margin:-9px auto 5px;
+		}
+		.tabset li{
+			float:left;
+			width:32%;
+			background:rgba(255,255,255,.9);
+			margin-right:2%;
+			font-size:.8em;
+			height:2.4em;
+			line-height:2.4em;
+			padding:0 2%;
+			-webkit-border-radius:2px;
+			-moz-border-radius:2px;
+			border-radius:2px;
+			color:#585858;
+			text-shadow:0 1px 0 rgba(255,255,255,1);
+			-webkit-box-shadow:0 3px 2px rgba(0,0,0,.5);
+			box-shadow:0 1px 3px rgba(0,0,0,.4);
+			text-align:center;
+		}
+		.tabset li:last-child{
+			margin-right:0;
+		}
+		.lihover{
+			background:rgba(248, 247, 247, 0.9) !important;
+			color:#79afef !important;
+		}
+		.clearfix{
+			overflow:hidden;
+			*zoom:1;
+		}
+		.clearfix:after{
+			content:'';
+			overflow:hidden;
+			height:0;
+			display:block;
+			clear:both;
+		}
+		.clear{clear:both;}
+		
+		/*日期*/
+		#contentedit{
+			background:rgba(255,255,255,0.5);
+			border-radius:4px;
+			width:98%;
+			margin:10px auto;
+			padding:1%;
+		}
+		#datatime{
+			text-align:right;
+			font-size:.75em;
+			text-shadow:0 1px 0 rgba(255,255,255,.3);
+		}
+		#message{
+			background:none;
+			width:100%;
+			border:none;
+			resize:none;
+			font-size:.8em ;
+			line-height:1.5em;
+			letter-spacing:1px;
+			text-shadow:0 1px 0 rgba(255,255,255,.3);
+		}
+		.celebrate{
+			text-align:right;
+			font-size:.7em;	
+			text-shadow:0 1px 0 rgba(255,255,255,.3);
+		}
+		
+		/*操作按钮*/
+		.butlist{
+			width:90%;
+			margin:30px auto;
+		}
+		.butlist li{
+			float:left;
+			outline:0;
+			-webkit-tap-highlight-color:rgba(255,0,0,0);
+		}
+		.butlist li:first-child{
+			background: none repeat scroll 0 0 rgba(238, 130, 107, 0.7);
+			border-radius: 0.9em;
+			color: #FFFFFF !important;
+			display: inline-block;
+			float: left;
+			font-size: 1.2em;
+			line-height: 2em;
+			margin: 0 7%;
+			text-align: center;
+			text-decoration: none;
+			width: 35%;
+			text-shadow:0 1px 0 rgba(0,0,0,.3);
+		}
+		.butlist li:last-child{
+			background: none repeat scroll 0 0 rgba(75, 189, 198, 0.7);
+			border-radius: 0.9em;
+			color: #FFFFFF !important;
+			display: inline-block;
+			float: left;
+			font-size: 1.2em;
+			line-height: 2em;
+			margin: 0 7%;
+			text-align: center;
+			text-decoration: none;
+			width: 35%;			
+			text-shadow:0 2px 0 rgba(0,0,0,.3);
+		}
+		.buthover{
+			filter:alpha(opacity=90);
+			opacity:.9;
+		}
+		
+		/*分享指引*/
+		#shareguide{
+			position:absolute;
+			z-index:9999999;
+			top:0;
+			bottom:0;
+			right:0;
+			width:100%;
+			background:rgba(0,0,0,.5);
+			display:none;
+		}
+		#dateTimer{
+			width:98%;
+			margin:0 auto;
+			font-size:.85em;
+			color:#fff;
+			text-shadow:0 0 5px rgba(0,0,0,.6);
+		}
+		
+	/*飘落特效*/
+	 #leafContainer {
+		position: absolute;
+		z-index: 99;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left:0;
+		overflow: hidden;
+		bottom:0;
+	}
+
+	#leafContainer > div {
+		position: absolute;
+		max-width: 100px;
+		max-height: 100px;
+		-webkit-animation-iteration-count: infinite, infinite;
+		-webkit-animation-direction: normal, normal;
+		-webkit-animation-timing-function: linear, ease-in;
+	}
+
+	#leafContainer > div > img {
+		width: 100%;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-direction: alternate;
+		-webkit-animation-timing-function: ease-in-out;
+		-webkit-transform-origin: 50% -100%;
+	}
+
+	@-webkit-keyframes fade {
+	   
+		0% {
+			opacity: 1;
+		}
+
+		95% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@-webkit-keyframes drop {
+		0% {
+			-webkit-transform: translate(0px, -50px);
+		}
+
+		100% {
+			-webkit-transform: translate(0px, 650px);
+		}
+	}
+
+	@-webkit-keyframes clockwiseSpin {
+		0% {
+			-webkit-transform: rotate(-50deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(50deg);
+		}
+	}
+
+	@-webkit-keyframes counterclockwiseSpinAndFlip {
+		
+		0% {
+			-webkit-transform: scale(-1, 1) rotate(50deg);
+		}
+
+		100% {
+			-webkit-transform: scale(-1, 1) rotate(-50deg);
+		}
+	}	
+	</style>
+</head>
+<body id='bg'>
+	<h2 class="tip">点击屏幕按钮即可更换梦幻主题、主题音乐、祝福语</h2>
+	<section class="main">
+		<!-- 播放按钮 -->
+		<!-- <span id="playbox" onclick="playbox.play();return false;" class="btn_music"> -->
+		<span id="playbox"  class="btn_music">
+			<audio src="public/sound/10.m4a" loop="" id="audio" autoplay="autoplay">
+		</span>
+		<span id='soundName'>不再联系-经典歌曲</span>
+		<div class="clear" ></div>
+		<br />
+		<!-- 切换设置 -->
+		<ul class='tabset clearfix' id='tabset'>
+			<li id='wish'>伤感的离去</li>
+			<li id='changmusic'>更换背景音乐</li>
+			<li id='changimg'>更换主题风格</li>
+		</ul>
+		
+		<article id='contentedit'>
+			<textarea name="" id="message" cols="30" rows="5" readonly>亲，谢谢你打开
+懂得放弃，才能在有限的生命里活得充实、饱满、丰盛!  得之坦然！失之淡然！谁走进你的生命，是由命运决定；谁停留在你生命中，却是由你自己决定。</textarea>			
+			<p class='celebrate'>缘起缘落，人聚人散！</p>
+			<!-- <p class='celebrate'>打开的人都是最幸福的,中秋节快乐！</p> -->
+			<p id='datatime'></p>
+		</article>
+		
+		<p id="dateTimer">
+                离2014年中秋节还有
+        </p>
+		
+		<ul class="butlist clearfix" id='controlbut'>
+			<li id='edit'>编辑</li>
+			<li  id='share'>转发</li>
+		</ul>
+		
+	</section>
+	
+	<!-- 分享指引 -->
+	<div id='shareguide'>
+		 <img src="public/img/guidetofollow.png" style="width:100%;heigth:100%;">
+	</div>
+	
+	<!-- 飘落特效 -->
+	<div id="leafContainer">
+		<div style="top: -100px; left: 45px; -webkit-animation: fade 6.254718376789242s 1.3937594590242952s, drop 6.254718376789242s 1.3937594590242952s;">
+			<img src="public/img/love1.png" style="-webkit-animation: clockwiseSpin 4.528264025226235s;">
+		</div>
+		<div style="top: -100px; left: 323px; -webkit-animation: fade 10.80417761253193s 2.343412428162992s, drop 10.80417761253193s 2.343412428162992s;">
+			<img src="public/img/love3.png" style="-webkit-animation: clockwiseSpin 6.692364586517215s;">
+		</div>
+		<div style="top: -100px; left: 56px; -webkit-animation: fade 6.581935833208263s 4.042098803911358s, drop 6.581935833208263s 4.042098803911358s;">
+			<img src="public/img/love2.png" style="-webkit-animation: clockwiseSpin 6.593980150297284s;">
+		</div>
+		<div style="top: -100px; left: 344px; -webkit-animation: fade 8.589324277825654s 4.763000127859414s, drop 8.589324277825654s 4.763000127859414s;">
+			<img src="public/img/love2.png" style="-webkit-animation: clockwiseSpin 4.428382712416351s;">
+		</div>
+		<div style="top: -100px; left: 204px; -webkit-animation: fade 5.20830522896722s 4.284693805966526s, drop 5.20830522896722s 4.284693805966526s;">
+			<img src="public/img/love3.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.260147791355848s;">
+		</div>
+		<div style="top: -100px; left: 477px; -webkit-animation: fade 8.266062413342297s 3.3254372340161353s, drop 8.266062413342297s 3.3254372340161353s;">
+			<img src="public/img/love4.png" style="-webkit-animation: counterclockwiseSpinAndFlip 4.068895094096661s;">
+		</div>
+		<div style="top: -100px; left: 216px; -webkit-animation: fade 5.07124475762248s 1.6880290571134537s, drop 5.07124475762248s 1.6880290571134537s;">
+			<img src="public/img/love1.png" style="-webkit-animation: clockwiseSpin 4.032530274242163s;">
+		</div>
+		<div style="top: -100px; left: 278px; -webkit-animation: fade 8.020147716160864s 1.099573440151289s, drop 8.020147716160864s 1.099573440151289s;">
+			<img src="public/img/love4.png" style="-webkit-animation: counterclockwiseSpinAndFlip 4.361245024949312s;">
+		</div>
+		<div style="top: -100px; left: 203px; -webkit-animation: fade 10.384811986703426s 4.916147360345349s, drop 10.384811986703426s 4.916147360345349s;">
+			<img src="public/img/love2.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.230834933929145s;">
+		</div>
+		<div style="top: -100px; left: 203px; -webkit-animation: fade 6.274114993400872s 1.4924428437370807s, drop 6.274114993400872s 1.4924428437370807s;">
+			<img src="public/img/love2.png" style="-webkit-animation: clockwiseSpin 4.529358358122408s;">
+		</div>
+		<div style="top: -100px; left: 71px; -webkit-animation: fade 6.596708487719297s 4.449598286300898s, drop 6.596708487719297s 4.449598286300898s;">
+			<img src="public/img/love1.png" style="-webkit-animation: counterclockwiseSpinAndFlip 7.635968546383083s;">
+		</div>
+		<div style="top: -100px; left: 278px; -webkit-animation: fade 8.103118342813104s 0.8520317717920989s, drop 8.103118342813104s 0.8520317717920989s;">
+			<img src="public/img/love3.png" style="-webkit-animation: clockwiseSpin 6.059931475669146s;">
+		</div>
+		<div style="top: -100px; left: 485px; -webkit-animation: fade 8.846980835311115s 3.214496156433597s, drop 8.846980835311115s 3.214496156433597s;">
+			<img src="public/img/love4.png" style="-webkit-animation: counterclockwiseSpinAndFlip 4.3350615398958325s;">
+		</div>
+		<div style="top: -100px; left: 355px; -webkit-animation: fade 10.414351323619485s 1.4452949177939445s, drop 10.414351323619485s 1.4452949177939445s;">
+			<img src="public/img/love3.png" style="-webkit-animation: clockwiseSpin 5.7396479258313775s;">
+		</div>
+		<div style="top: -100px; left: 367px; -webkit-animation: fade 7.314893191680312s 4.042701742146164s, drop 7.314893191680312s 4.042701742146164s;">
+			<img src="public/img/love4.png" style="-webkit-animation: counterclockwiseSpinAndFlip 7.739455367438495s;">
+		</div>
+		<div style="top: -100px; left: 180px; -webkit-animation: fade 10.163782458752394s 1.6260560881346464s, drop 10.163782458752394s 1.6260560881346464s;">
+			<img src="public/img/love3.png" style="-webkit-animation: clockwiseSpin 5.214073951356113s;">
+		</div>
+		<div style="top: -100px; left: 329px; -webkit-animation: fade 9.44884391920641s 4.743403735337779s, drop 9.44884391920641s 4.743403735337779s;">
+			<img src="public/img/love3.png" style="-webkit-animation: counterclockwiseSpinAndFlip 4.364217874594033s;">
+		</div>
+		<div style="top: -100px; left: 5px; -webkit-animation: fade 10.575017041992396s 1.8461048847530037s, drop 10.575017041992396s 1.8461048847530037s;">
+			<img src="public/img/love1.png" style="-webkit-animation: clockwiseSpin 7.251207870431244s;">
+		</div>
+		<div style="top: -100px; left: 90px; -webkit-animation: fade 10.207727859262377s 3.6706320964731276s, drop 10.207727859262377s 3.6706320964731276s;">
+			<img src="public/img/love4.png" style="-webkit-animation: clockwiseSpin 4.732141689397395s;">
+		</div>
+		<div style="top: -100px; left: 102px; -webkit-animation: fade 7.888716937508434s 4.232491684379056s, drop 7.888716937508434s 4.232491684379056s;">
+			<img src="public/img/love3.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.76119037438184s;">
+		</div>
+		<div style="top: -100px; left: 285px; -webkit-animation: fade 7.368933217134327s 4.946495273616165s, drop 7.368933217134327s 4.946495273616165s;">
+			<img src="public/img/love1.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.9621632397174835s;">
+		</div>
+		<div style="top: -100px; left: 182px; -webkit-animation: fade 10.829001223668456s 0.3670965856872499s, drop 10.829001223668456s 0.3670965856872499s;">
+			<img src="public/img/love2.png" style="-webkit-animation: clockwiseSpin 5.145721166394651s;">
+		</div>
+		<div style="top: -100px; left: 225px; -webkit-animation: fade 5.579227922018617s 3.6156653543002903s, drop 5.579227922018617s 3.6156653543002903s;">
+			<img src="public/img/love3.png" style="-webkit-animation: counterclockwiseSpinAndFlip 4.173583277501166s;">
+		</div>
+		<div style="top: -100px; left: 449px; -webkit-animation: fade 7.074126662220806s 1.7363462399225682s, drop 7.074126662220806s 1.7363462399225682s;">
+			<img src="public/img/love4.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.944946987554431s;">
+		</div>
+		<div style="top: -100px; left: 278px; -webkit-animation: fade 10.97782639740035s 0.5647349229548126s, drop 10.97782639740035s 0.5647349229548126s;">
+			<img src="public/img/love3.png" style="-webkit-animation: clockwiseSpin 5.530094191431999s;">
+		</div>
+		<div style="top: -100px; left: 5px; -webkit-animation: fade 6.279225902166218s 4.067059529479593s, drop 6.279225902166218s 4.067059529479593s;">
+			<img src="public/img/love4.png" style="-webkit-animation: clockwiseSpin 7.304964271374047s;">
+		</div>
+		<div style="top: -100px; left: 195px; -webkit-animation: fade 5.927754618227482s 4.018671115627512s, drop 5.927754618227482s 4.018671115627512s;">
+			<img src="public/img/love2.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.339397082105279s;">
+		</div>
+		<div style="top: -100px; left: 150px; -webkit-animation: fade 5.098411943297833s 3.8300437049474567s, drop 5.098411943297833s 3.8300437049474567s;">
+			<img src="public/img/love3.png" style="-webkit-animation: counterclockwiseSpinAndFlip 6.495022803544998s;">
+		</div>
+		<div style="top: -100px; left: 220px; -webkit-animation: fade 10.441646199207753s 0.24987581302411854s, drop 10.441646199207753s 0.24987581302411854s;">
+			<img src="public/img/love2.png" style="-webkit-animation: clockwiseSpin 5.89743700157851s;">
+		</div>
+		<div style="top: -100px; left: 201px; -webkit-animation: fade 8.558148145209998s 3.9983590703923255s, drop 8.558148145209998s 3.9983590703923255s;">
+			<img src="public/img/love2.png" style="-webkit-animation: counterclockwiseSpinAndFlip 5.816642233170569s;">
+		</div>
+	</div>	
+	
+<script type="text/javascript">
+	/*
+		@author pingfan
+		pingfan命名空间
+	*/
+	var pingfan=function(){
+		return{
+			$$:function(id){
+				return (!id) ? null :  document.getElementById(id);
+			},
+				
+			hostPost:function(url,param,callback){
+				var xmlhttp;
+				if (window.XMLHttpRequest){
+				  xmlhttp=new XMLHttpRequest();
+				  }
+				else{
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+				  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+					{				
+						if(callback){
+							callback(xmlhttp.responseText);					
+						}
+
+					}
+				  }	
+				xmlhttp.open("POST",url,true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
+				xmlhttp.send(param);		
+			},
+			
+			stopDefault:function(e){
+				var e=e || window.event;
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					e.returnValue=false;
+				}			
+			},
+			addClass:function(elem,value){
+                if(!element.className) {
+					element.className = value;
+					} else {
+					var newClassName = element.className;
+					newClassName += " ";
+					newClassName += value;
+					element.className = newClassName;
+				}				
+			},
+			getIndex:function(elem,arr){
+				arr=arr || [];
+				for(var i=0,len=arr.length;i<len;i++){		
+					if(arr[i]==elem){
+							return i;
+					}
+				}
+			},
+			tab:function(elem,classname,callback1,callback2){
+				var elem=elem || [];
+				for(var i=elem.length;i--;){
+					elem[i].onclick=function(e){
+						var element=e.target ? e.target : e.srcElement;	
+						for(var j=elem.length;j--;){
+							elem[j].className='';
+						}
+						element.className=classname;
+						var id=pingfan.getIndex(element,elem);
+						if(id==0 && callback1){
+							callback1();
+						}
+						if(id==1 && callback2){
+							callback2();
+						}
+					}
+				}
+			},
+			getUrlParam:function(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]); return null;
+			},
+		
+			hover:function(elem,className){
+				var elem=elem || [];
+				for(var i=elem.length;i--;){
+					elem[i].addEventListener('touchstart',function(){this.className=className;},false);
+					elem[i].addEventListener('touchend',function(){this.className='';},false);
+				}
+			},
+			isWeiXin:function(){  
+				var ua = window.navigator.userAgent.toLowerCase();  
+				if(ua.match(/MicroMessenger/i) == 'micromessenger'){  
+					return true;  
+				}else{  
+				   return false;  
+				}  
+			},
+			toDouble:function(num){
+				num>=10 ? num=''+num : num='0'+num ;
+                        return num;
+			},
+			daoTimer:function(year,month,day,hour, minute,seconds,elem){               
+                        var hour=hour || 0,
+                            minute=minute || 0,
+                            seconds=seconds || 0;                                
+                        var endTime=new Date();                              
+                                endTime.setFullYear(parseInt(year)),                               
+                                endTime.setMonth(parseInt(month)-1),                             
+                                endTime.setDate(parseInt(day)),                          
+                                endTime.setHours(parseInt(hour)),                           
+                                endTime.setMinutes(parseInt(minute)),                           
+                                endTime.setSeconds(parseInt(seconds));      
+                        setTime();
+                        setInterval(function(){
+                                setTime()
+                        },1000);        
+                        function setTime(){                                                
+                                var startTime=new Date();
+								if(endTime.getTime()-startTime.getTime()<0){
+									var lengthTime=parseInt((startTime.getTime()-endTime.getTime())/1000);
+								}else{
+									var lengthTime=parseInt((endTime.getTime()-startTime.getTime())/1000);
+								}
+                                var     lSeconds=parseInt(lengthTime % 60),                                
+                                        lMinute=parseInt((lengthTime/60)%60),         
+                                        lHour=Math.floor((lengthTime/3600)%24),
+                                        lDay=Math.floor(lengthTime/(24*3600));
+								if(endTime.getTime()-startTime.getTime()<0){		
+									elem.innerHTML='2014年中秋节已过去'+lDay+'天'+pingfan.toDouble(lHour)+'小时'+pingfan.toDouble(lMinute)+'分钟'+pingfan.toDouble(lSeconds)+'秒';									
+								}else{
+									elem.innerHTML='离2014年中秋节还有'+lDay+'天'+pingfan.toDouble(lHour)+'小时'+pingfan.toDouble(lMinute)+'分钟'+pingfan.toDouble(lSeconds)+'秒';
+								}
+                        }
+                        
+            },
+			loadImages:function(sources,callback){
+				var count=0,
+				images={},
+				imgNum=0;
+				sources=sources || [];
+				for(src in sources){
+					images[src]=new Image();
+					images[src].onload=function(){
+						if(++count >= imgNum){
+							callback(images);
+						}
+					}
+					images[src].src=sources[src];
+				}			
+			}
+		}
+	}();
+		
+	window.addEventListener('load', function(){
+	   setTimeout(function(){ window.scrollTo(0, 1); }, 100);
+	});
+	
+	var  tabset=pingfan.$$('tabset'),
+		 tabli=tabset.children; 
+	
+		pingfan.hover(tabli,'lihover');	
+ 
+
+	var but=pingfan.$$('controlbut').children;
+	pingfan.hover(but,'buthover');	
+	
+
+	var edit=pingfan.$$('edit'),
+		share=pingfan.$$('share'),
+		message=pingfan.$$('message'),
+		shareguide=pingfan.$$('shareguide')
+		init=true;
+	edit.addEventListener('click',function(){
+		if(init == true){
+			message.removeAttribute("readOnly");
+			message.focus();
+			this.innerHTML='保存';
+			init=false;
+		}else{
+			message.setAttribute("readOnly",true);
+			this.innerHTML='编辑';
+			init=true;
+		}
+	},false)	
+	
+	share.addEventListener('click',function(){
+		if(pingfan.isWeiXin())shareguide.style.display='block'
+		
+	},false)
+	shareguide.addEventListener('touchstart',function(){
+		shareguide.style.display='none';
+	},false)
+	
+
+	var playbox=pingfan.$$('playbox'),
+		audio=pingfan.$$('audio'),
+		soundName=pingfan.$$('soundName'),
+		changimg=pingfan.$$('changimg'),
+		bg=pingfan.$$('bg');
+		
+	//通过监听window touchstart触发声音，在safri on ios里面明确指出等待用户的交互动作后才能播放media，也就是说如果你没有得到用户的action就播放的话就会被safri拦截
+	window.addEventListener('touchstart',function(){audio.play()},false);	
+	
+	playbox.addEventListener('click',function(){	
+			if(this.className == 'btn_music'){
+				playbox.className = 'btn_music on';
+				audio.pause();
+			}else{
+				audio.play();
+				this.className = 'btn_music'
+			}
+	},false);
+	
+	changmusic.addEventListener('click',function(){		
+			var num=Math.floor(Math.random()*10+1);
+			switch(num){
+				case 0: 
+				soundName.innerHTML='今生爱上你-经典歌曲';
+				break;					
+				case 1:
+				soundName.innerHTML='对你说-经典歌曲';
+				break;		
+				case 2:
+				soundName.innerHTML='后会无期-经典歌曲';
+				break;
+				case 3:
+				soundName.innerHTML='贝加尔湖畔-经典歌曲';
+				break;
+				case 4:
+				soundName.innerHTML='愿得一人心-经典歌曲';
+				break;
+				case 5:
+				soundName.innerHTML='陪你走到底-经典歌曲';
+				break;
+				case 6:
+				soundName.innerHTML='爱你没错-经典歌曲';
+				break;
+				case 7:
+				soundName.innerHTML='好久不见-经典歌曲';
+				break;
+				case 8:
+				soundName.innerHTML='时间都去哪儿了-经典歌曲';
+				break;
+				case 9:
+				soundName.innerHTML='别让爱迷路-经典歌曲';
+				break;			
+				case 10:
+				soundName.innerHTML='不再联系-经典歌曲';
+				break;
+			}
+		
+				audio.src='public/sound/'+num+'.m4a';
+	},false);
+
+	changimg.addEventListener('click',function(){
+			var num=Math.floor(Math.random()*10+1);
+			pingfan.loadImages(['public/img/'+num+'.jpg'],function(){
+				bg.style.backgroundImage='url(public/img/'+num+'.jpg)';
+			})
+			
+	},false)
+	
+
+	var wish=pingfan.$$('wish'),html=message.innerHTML;
+	wish.addEventListener('click',function(){
+		var num=Math.floor(Math.random()*6);
+		switch(num){
+				case 0: 
+				wish.innerHTML='浓浓的爱意',
+				message.innerHTML=html;
+				window.shareData.tContent=html;
+				break;	
+				
+				case 1:
+				wish.innerHTML='美好的祝福',
+				message.innerHTML='亲，谢谢你打开                                                                                                                                                                                                                                     中秋到，月儿明，团圆的月饼送给您。愿您身体健康，家庭团圆，愿我们的合作更加愉快，大家共努力，事业同进步！所有亲爱的都平安健康！幸福美好';
+				
+				window.shareData.tContent='亲，谢谢你打开                                                                                                                                                                                                                                     中秋到，月儿明，团圆的月饼送给您。愿您身体健康，家庭团圆，愿我们的合作更加愉快，大家共努力，事业同进步！所有亲爱的都平安健康！幸福美好';
+				break;	
+				
+				case 2:
+				wish.innerHTML='心与心的祝福',
+				message.innerHTML='亲，谢谢你打开                                                                                                                                                                                                                                     让最圆的明月陪伴你和我，让明月传达我的心愿与祝福。祝你中秋佳节快乐，月圆人圆事事圆满！所有亲爱的都平安健康！幸福美好';
+				
+				window.shareData.tContent='亲，谢谢你打开                                                                                                                                                                                                                                     让最圆的明月陪伴你和我，让明月传达我的心愿与祝福。祝你中秋佳节快乐，月圆人圆事事圆满！所有亲爱的都平安健康！幸福美好';
+				break;
+				
+				case 3:	
+				wish.innerHTML='飒爽的秋天',
+				message.innerHTML='亲，谢谢你打开                                                                                                                                                                                                                                     月亮是诗，星空是画，愿所有的幸福伴随你，问候是春，关心是夏，愿所有的朋友真心待你，温柔是秋，愿所有快乐跟随你。所有亲爱的都平安健康！幸福美好';
+				
+				window.shareData.tContent='亲，谢谢你打开                                                                                                                                                                                                                                     月亮是诗，星空是画，愿所有的幸福伴随你，问候是春，关心是夏，愿所有的朋友真心待你，温柔是秋，愿所有快乐跟随你。所有亲爱的都平安健康！幸福美好';
+				
+				break;
+				
+				case 4:
+				wish.innerHTML='浓浓的诗意',
+				message.innerHTML='亲，谢谢你打开                                                                                                                                                                                                                                     恨君不是江楼月，东西南北，东西南北，只愿相随不愿离；恨君恰似江楼月，暂满还亏，暂满还亏，待得团圆是几时？？所有亲爱的都平安健康！幸福美好';
+				
+				window.shareData.tContent='亲，谢谢你打开                                                                                                                                                                                                                                     恨君不是江楼月，东西南北，东西南北，只愿相随不愿离；恨君恰似江楼月，暂满还亏，暂满还亏，待得团圆是几时？？所有亲爱的都平安健康！幸福美好';
+				
+				break;
+				
+				case 5:
+				wish.innerHTML='伤感的离去',
+				message.innerHTML='亲，谢谢你打开                                                                                                                                                                                                                                     懂得放弃，才能在有限的生命里活得充实、饱满、丰盛!  得之坦然！失之淡然！谁走进你的生命，是由命运决定；谁停留在你生命中，却是由你自己决定。';
+				
+				window.shareData.tContent='亲，谢谢你打开                                                                                                                                                                                                                                     懂得放弃，才能在有限的生命里活得充实、饱满、丰盛!  得之坦然！失之淡然！谁走进你的生命，是由命运决定；谁停留在你生命中，却是由你自己决定。';
+				
+				break;
+		}
+		
+	},false)
+	
+
+	var datatime=pingfan.$$('datatime');
+	var date=new Date(),
+		dyear=date.getFullYear(),
+		dmonth=date.getMonth()+1,
+		dDate=date.getDate();
+	datatime.innerHTML=dyear+'-'+dmonth+'-'+dDate;	
+
+	
+	
+	
+  var dateTimer=pingfan.$$('dateTimer');	
+  pingfan.daoTimer(2014,09,08,0,0,0,dateTimer);
+
+window.shareData = {
+		"imgUrl": "http://pingfan1990.sinaapp.com/html5/yao/img/logo.png",
+		"timeLineLink": location.href,
+		"tTitle": "中秋节快乐-只想对你说",
+		"tContent": "中秋佳节来临之前,祝所有亲爱的中秋节快乐,开心每一天!幸福一生!!!愿所有亲爱的一切都好！所有亲爱的都平安健康！幸福美好。"
+};
+
+document.addEventListener("WeixinJSBridgeReady", function () {
+    WeixinJSBridge.on("menu:share:appmessage", function (e) {
+        WeixinJSBridge.invoke("sendAppMessage", {
+            img_url: window.shareData.imgUrl,
+            link: window.shareData.timeLineLink,
+            desc: window.shareData.tContent,
+            title: window.shareData.tTitle
+        }, onShareComplete)
+    });
+	
+
+    WeixinJSBridge.on("menu:share:timeline", function (e) {
+        WeixinJSBridge.invoke("shareTimeline", {
+            img_url: window.shareData.imgUrl,
+            img_width: "640",
+            img_height: "640",
+            link: window.shareData.timeLineLink,
+            desc: window.shareData.tTitle,
+            title: window.shareData.tContent
+        }, onShareComplete)
+    })
+}, false);
+
+function onShareComplete(){}	
+
+</script>	
+<script type="text/javascript">
+
+const NUMBER_OF_LEAVES = 30;
+ 
+function init(num)
+{
+    if (num==0||num=="0") 
+	   {return;}
+    var container = document.getElementById('leafContainer');
+   
+    for (var i = 0; i < NUMBER_OF_LEAVES; i++) 
+    {
+        container.appendChild(createALeaf(num));
+    }
+}
+
+ function randomInteger(low, high)
+{
+    return low + Math.floor(Math.random() * (high - low));
+}
+
+ 
+function randomFloat(low, high)
+{
+    return low + Math.random() * (high - low);
+}
+
+ 
+function pixelValue(value)
+{
+    return value + 'px';
+}
+ 
+function durationValue(value)
+{
+    return value + 's';
+}
+ 
+function createALeaf(num)
+{
+    
+    var leafDiv = document.createElement('div');
+    var image = document.createElement('img');
+    
+    if   (num==1) 
+	     {
+			 flashtype='realLeaf';
+			 }
+		else if (num==2)
+		{
+			 flashtype='snow';
+			}
+		else if (num==3)
+		{
+			 flashtype='meigui';
+			}
+			else if (num==4)
+		{
+			 flashtype='love';
+			}
+			else if (num==5)
+		{
+			 flashtype='missu';
+			}else if(num==6){
+				flashtype='feather';
+			}
+    image.src = 'public/img/' +flashtype+ randomInteger(1, 5) + '.png';
+    
+    leafDiv.style.top = "-100px";
+
+  
+    leafDiv.style.left = pixelValue(randomInteger(0, 500));
+    
+   
+    var spinAnimationName = (Math.random() < 0.5) ? 'clockwiseSpin' : 'counterclockwiseSpinAndFlip';
+    
+    
+    leafDiv.style.webkitAnimationName = 'fade, drop';
+    image.style.webkitAnimationName = spinAnimationName;
+    
+   
+    var fadeAndDropDuration = durationValue(randomFloat(5, 11));
+   
+    var spinDuration = durationValue(randomFloat(4, 8));
+     
+    leafDiv.style.webkitAnimationDuration = fadeAndDropDuration + ', ' + fadeAndDropDuration;
+
+    var leafDelay = durationValue(randomFloat(0, 5));
+    leafDiv.style.webkitAnimationDelay = leafDelay + ', ' + leafDelay;
+
+    image.style.webkitAnimationDuration = spinDuration;
+
+ 
+    leafDiv.appendChild(image);
+ 
+    return leafDiv;
+}
+
+ window.onload=function(){      
+	//num=0一次，num=其他多次
+	var num = 4;
+	//var num = 1;
+	
+	init(num);
+   
+};	
+	
+</script>
+  
+</body>
+</html>
